@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd9af066b6f5f3840b4c3d329a51f38a, type: 3}
+  m_Name: ItemData 2
+  m_EditorClassIdentifier: 
+  ID: 21
+  Name: "D\u01B0a gang"
+  Image: {fileID: 8821371696964291164, guid: 031678d507e557a41b7a16fc33bf6c39, type: 3}
+  price: 3
+  MaxCapacity: 2
+  description: "Hoi 25 m\xE1u\n"

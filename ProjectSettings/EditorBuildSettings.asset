@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Mainmenu.unity
+    guid: ee78eb18360811546a87f43d38fdef41
+  - enabled: 1
+    path: Assets/Scenes/lever1.unity
+    guid: 80cd0c38facb6ae48a43daf8f0247b87
+  - enabled: 1
+    path: Assets/Scenes/lever2.unity
+    guid: d03a98f27aae93640900c67ef91b95ec
+  m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
