@@ -1,13 +1,21 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using UnityEngine;
-public class SaveLoad:Singleton<SaveLoad>
+public class SaveLoad : Singleton<SaveLoad>
 {
-    public readonly string SAVE_INVENTORY = System.IO.Path.Combine(Application.dataPath , "Save/inventory.json");
+    private string _SAVE_INVENTORY;
+    private string DIRECTORY;
+    public string SAVE_INVENTORY => _SAVE_INVENTORY;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
+        DIRECTORY= Path.Combine(Application.persistentDataPath, "Save");
+        _SAVE_INVENTORY = Path.Combine(DIRECTORY, "inventory.json");
+        if (!Directory.Exists(DIRECTORY))
+        {
+            Directory.CreateDirectory(DIRECTORY);
+        }
         Debug.Log(SAVE_INVENTORY);
     }
 
@@ -18,7 +26,7 @@ public class SaveLoad:Singleton<SaveLoad>
             InventoryManager.Instance.ClearInventory();
             string temp = System.IO.File.ReadAllText(SAVE_INVENTORY);
             InventoryData ReadLog = JsonUtility.FromJson<InventoryData>(temp);
-            foreach(InfoStoraging item in ReadLog.RemainingInIventory)
+            foreach (InfoStoraging item in ReadLog.RemainingInIventory)
             {
                 InventoryManager.Instance.SetItemInventory(item);
             }

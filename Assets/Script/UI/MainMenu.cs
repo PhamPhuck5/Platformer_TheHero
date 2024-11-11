@@ -4,37 +4,41 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] Button NewGame;
-    [SerializeField] Button LoadGame;
+    [SerializeField] Button NewGameButton;
+    [SerializeField] Button LoadGameButton;
     [SerializeField] Button OutGameButton;
 
     private void Awake()
     {
-        NewGame.onClick.AddListener(PlayNewGame);
         if (!SaveLoad.Instance.HavingSave())
         {
-            Color currentColor = LoadGame.GetComponent<Image>().color;
+            Color currentColor = LoadGameButton.GetComponent<Image>().color;
             currentColor.a = 0.3f;
-            LoadGame.GetComponent<Image>().color = currentColor;
+            LoadGameButton.GetComponent<Image>().color = currentColor;
+            LoadGameButton.transform.GetChild(1).gameObject.SetActive(false);
         }
         else
         {
-            LoadGame.onClick.AddListener(LoadOldGame);
+            LoadGameButton.transform.GetChild(1).gameObject.SetActive(true);
+            LoadGameButton.onClick.AddListener(LoadOldGame);
         }
         OutGameButton.onClick.AddListener(() =>
         {
             Application.Quit();
         });
+        NewGameButton.onClick.AddListener(PlayNewGame);
+
     }
     void PlayNewGame()
     {
-        SceneManager.LoadScene("lever1");
         GetComponent<MainMenu>().enabled = false;
+        GlobalVariable.IsLoad = true;
+        SceneManager.LoadScene("lever1");
     }
     void LoadOldGame()
     {
-        SceneManager.LoadScene("lever1");
-        GlobalVariable.IsLoad = true;
+        GlobalVariable.IsLoad = false;
         GetComponent<MainMenu>().enabled = false;
+        SceneManager.LoadScene("lever1");
     }
 }

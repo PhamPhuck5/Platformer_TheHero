@@ -81,6 +81,7 @@ public class SettingButton : Singleton<SettingButton>
     }
     private void ReturnMainMenu()
     {
+        SaveLoad.Instance.SaveInventory();
         Destroy(Player.Instance.gameObject);
         Destroy(InventoryManager.Instance.gameObject);
         Destroy(gameObject);
